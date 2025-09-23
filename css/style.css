@@ -45,7 +45,8 @@ body {
     display: block;
     max-width: 280px;
     max-height: 180px;
-    object-fit: contain;/* Mantiene proporciones sin recortar */
+    object-fit: contain;
+    /* Mantiene proporciones sin recortar */
     margin: 10px auto;
     background-color: #fafafa;
     border-bottom: 2px solid #e5e5e5;
@@ -115,4 +116,142 @@ body {
 
 .btn-danger:hover {
     background-color: #c82333;
+}
+
+
+/* boton de carrito de compras--------------------------------------------------------------------------------------- */
+#button-carrito {
+    width: 70px;
+    height: 30px;
+    top: 20px;
+    left: 1410px;
+    border-radius: 20px;
+    color: #ffe602;
+    background: #0f172a;
+    position: absolute;
+    overflow: hidden;  
+}
+
+/* tarjeta que se oculta................................................................................................... */
+/* Evitar scroll horizontal en toda la página */
+/* Evitar scroll horizontal */
+body {
+    overflow-x: hidden;
+}
+
+/* ======== CONTENEDOR DEL CARRITO ======== */
+#cont-carrito {
+    width: 320px;
+    position: fixed;
+    top: 80px;
+    right: 0;
+    background: #ffffff;
+    border-radius: 12px 0 0 12px;
+    box-shadow: -4px 0 12px rgba(0,0,0,0.15);
+    padding: 16px;
+    transform: translateX(100%);
+    transition: transform 0.3s ease-in-out;
+    z-index: 1000;
+}
+
+#cont-carrito.cambiar {
+    transform: translateX(0);
+}
+
+#cont-carrito h2 {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 12px;
+    text-align: center;
+    color: #333;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 6px;
+}
+
+/* ======== LISTA DE PRODUCTOS EN EL CARRITO ======== */
+.carrito-compras {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    max-height: 280px;   /* no se desborda infinito */
+    overflow-y: auto;    /* scroll solo vertical */
+    padding-right: 6px;  /* espacio para scroll */
+}
+
+/* ======== TARJETA DEL PRODUCTO ======== */
+.card-compras {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px;
+    border-radius: 10px;
+    background: #fafafa;
+    border: 1px solid #eee;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+    transition: transform 0.2s;
+}
+
+.card-compras:hover {
+    transform: scale(1.02);
+}
+
+/* Imagen del producto */
+.card-compras img {
+    width: 70px;
+    height: 50px;
+    border-radius: 8px;
+    object-fit: cover;
+    background: #fff;
+    border: 1px solid #ddd;
+    padding: 4px;
+}
+
+/* Datos del producto */
+#datos-compra {
+    flex: 1;
+}
+
+#datos-compra h3 {
+    font-size: 14px;
+    margin: 0;
+    font-weight: bold;
+    color: #333;
+}
+
+#datos-compra h4 {
+    font-size: 12px;
+    margin: 2px 0;
+    color: #777;
+}
+
+#datos-compra h2 {
+    font-size: 14px;
+    margin: 4px 0 0 0;
+    color: #28a745;
+    font-weight: bold;
+}
+
+/* Botón eliminar */
+.btn-eliminar {
+    font-size: 12px;
+    padding: 4px 8px;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    background: #dc3545;
+    color: #fff;
+    transition: background 0.2s;
+}
+
+.btn-eliminar:hover {
+    background: #b02a37;
+}
+
+/* ======== TOTAL ACUMULADO ======== */
+#total-carrito {
+    margin-top: 15px;
+    text-align: center;
+    font-size: 16px;
+    font-weight: bold;
+    color: #28a745;
 }
