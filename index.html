@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Vehiculos Dinamicos</title>
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
@@ -17,7 +17,6 @@
 
     <button id="button-carrito" class="bi bi-cart"></button>
 
-    </button>
     <section class="container my-4">
         <div class="row">
 
@@ -35,35 +34,43 @@
                     <!-- Nombre -->
                     <div class="mb-3">
                         <label for="nombre" class="form-label">Nombre</label>
-                        <input id="nombre-form" type="text" class="form-control" placeholder="Ej: Corolla" required>
+                        <input id="nombre-form" type="text" class="form-control" placeholder="Ej: Corolla">
                     </div>
 
                     <!-- Marca -->
                     <div class="mb-3">
                         <label for="marca" class="form-label">Marca</label>
-                        <input id="marca-form" type="text" class="form-control" placeholder="Ej: Toyota" required>
+                        <input id="marca-form" type="text" class="form-control" placeholder="Ej: Toyota">
                     </div>
 
                     <!-- Modelo -->
                     <div class="mb-3">
                         <label for="modelo" class="form-label">Modelo</label>
-                        <input id="modelo-form" type="text" class="form-control" placeholder="Ej: 2021" required>
+                        <input id="modelo-form" type="text" class="form-control" placeholder="Ej: 2021">
                     </div>
 
                     <!-- Kilometraje -->
                     <div class="mb-3">
                         <label for="kilometraje" class="form-label">Kilometraje</label>
-                        <input id="km-form" type="number" class="form-control" placeholder="Ej: 35000" required>
+                        <input id="km-form" type="number" class="form-control" placeholder="Ej: 35000">
                     </div>
 
                     <!-- Precio -->
                     <div class="mb-3">
                         <label for="precio" class="form-label">Precio ($)</label>
-                        <input id="precio-form" type="number" class="form-control" placeholder="Ej: 50000000" required>
+                        <input id="precio-form" type="number" class="form-control" placeholder="Ej: 50000000">
                     </div>
 
                     <button id="add-btn" type="submit" class="btn btn-primary">Agregar Vehículo</button>
                 </form>
+
+                <br>
+                <br>
+                <h3 id="mostrar-vehiculos">Aqui se mostraran los vehiculo resgistrados</h3>
+                <button>
+                    <a href="carrito.html" target="_blank">Ver vehiculos</a>
+                </button>
+
             </div>
 
 
@@ -84,8 +91,8 @@
                                 <h4 class="card-text">Kilometraje: 35,000 km</h4>
                                 <h2 class="text-success">$50,000,000</h2>
                                 <div class="d-flex justify-content-between mt-3">
-                                    <button id="comprar" class="btn btn-success btn-comprar">Comprar</button>
-                                    <button id="eliminar" class="btn btn-danger btn-eliminar">Eliminar</button>
+                                    <button class="btn btn-success btn-comprar">Comprar</button>
+                                    <button class="btn btn-danger btn-eliminar">Eliminar</button>
                                 </div>
                             </div>
                         </div>
@@ -93,37 +100,31 @@
                     <!-- Aquí se irán agregando las demás tarjetas dinámicamente con JS -->
                 </div>
             </div>
+
+
+
         </div>
-
-
 
 
         <div id="cont-carrito">
             <h2>Carrito de compras</h2>
             <div class="row">
-                <div class="col-md-12 carrito-compras">
-                    <!--tarjeta -->
-                    <!-- <div class="card-compras h-100">
+                <!--tarjeta -->
+                <!-- <div class="col-md-4 carrito-compras card-compras h-100">
                         <img src="https://www.buyatoyota.com/sharpr/bat/assets/img/vehicle-info/Corolla/2026/hero-image.png"
-                            class="card-img-top1 w-100" alt="Foto vehículo">
-                        <div id="datos-compra" class="card-body">
-                            <h3 class="card-title">Nombre</h3>
-                            <h4 class="card-subtitle text-muted">Marca</h4>
-                            <h2 class="text-success">$50,000,000</h2>
-                            <button class="eliminar-compra" class="btn btn-danger btn-eliminar">X</button>
-                        </div>
-                    </div> -->
-                </div>
+                            class="card-img-top w-100" alt="Foto vehículo">
+                        <div class="datos-compra col-md-8 card-body1">
+                            <h3 class="card-comprasH4 card-title ">Nombre</h3>
+                            <h4 class="card-marcasH3 card-subtitle text-muted ">Marca</h4>
+                            <h2 class="card-preciosH2 text-success ">$50,000,000</h2>
+                            <button class="eliminar-compra btn btn-danger btn-eliminar">X</button>
+                        </div> -->
             </div>
             <!--se crea este div para el total acumulado -->
             <div id="total-carrito" class="card-body text-end">
                 <h3>Total: <span id="monto-total">$0</span></h3>
             </div>
         </div>
-
-        </div>
-
-
 
     </section>
 

@@ -129,129 +129,182 @@ body {
     color: #ffe602;
     background: #0f172a;
     position: absolute;
-    overflow: hidden;  
+    overflow: hidden;
+    z-index: 3000;
 }
 
-/* tarjeta que se oculta................................................................................................... */
-/* Evitar scroll horizontal en toda la página */
-/* Evitar scroll horizontal */
-body {
-    overflow-x: hidden;
-}
 
 /* ======== CONTENEDOR DEL CARRITO ======== */
 #cont-carrito {
-    width: 320px;
     position: fixed;
-    top: 80px;
-    right: 0;
-    background: #ffffff;
+    top: 0;
+    right: -420px;
+    /* Oculto por defecto */
+    width: 380px;
+    height: 100%;
+    background-color: #fff;
+    box-shadow: -4px 0 12px rgba(0, 0, 0, 0.15);
+    padding: 20px;
+    overflow-y: auto;
+    transition: right 0.3s ease-in-out;
+    z-index: 1100;
     border-radius: 12px 0 0 12px;
-    box-shadow: -4px 0 12px rgba(0,0,0,0.15);
-    padding: 16px;
-    transform: translateX(100%);
-    transition: transform 0.3s ease-in-out;
-    z-index: 1000;
 }
 
+/* Cuando se active el toggle */
 #cont-carrito.cambiar {
-    transform: translateX(0);
+    right: 0;
 }
 
+/* Título */
 #cont-carrito h2 {
-    font-size: 18px;
+    font-size: 22px;
     font-weight: bold;
-    margin-bottom: 12px;
-    text-align: center;
-    color: #333;
-    border-bottom: 1px solid #eee;
-    padding-bottom: 6px;
+    margin-bottom: 16px;
+    color: var(--color-secondary);
+    text-align: left;
+    border-bottom: 2px solid #eee;
+    padding-bottom: 8px;
 }
 
-/* ======== LISTA DE PRODUCTOS EN EL CARRITO ======== */
+/* ======== TARJETAS DEL CARRITO ======== */
 .carrito-compras {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    max-height: 280px;   /* no se desborda infinito */
-    overflow-y: auto;    /* scroll solo vertical */
-    padding-right: 6px;  /* espacio para scroll */
-}
-
-/* ======== TARJETA DEL PRODUCTO ======== */
-.card-compras {
     display: flex;
     align-items: center;
     gap: 12px;
-    padding: 10px;
-    border-radius: 10px;
     background: #fafafa;
-    border: 1px solid #eee;
-    box-shadow: 0 1px 4px rgba(0,0,0,0.08);
-    transition: transform 0.2s;
-}
-
-.card-compras:hover {
-    transform: scale(1.02);
-}
-
-/* Imagen del producto */
-.card-compras img {
-    width: 70px;
-    height: 50px;
-    border-radius: 8px;
-    object-fit: cover;
-    background: #fff;
     border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 12px;
+    margin-bottom: 15px;
+    box-shadow: var(--shadow);
+    max-height: 200px;
+}
+
+/* Imagen dentro del carrito */
+.carrito-compras img {
+    max-width: 150px;
+    height: 70px;
+    object-fit: contain;
+    border-radius: 8px;
+    background: #fff;
+    border: 1px solid #e5e5e5;
     padding: 4px;
 }
 
 /* Datos del producto */
-#datos-compra {
+.card-body1 {
     flex: 1;
+    text-align: left;
 }
 
-#datos-compra h3 {
-    font-size: 14px;
+.card-comprasH4 {
+    font-size: 18px;
+    font-weight: bold;
     margin: 0;
-    font-weight: bold;
-    color: #333;
+    color: var(--color-text);
 }
 
-#datos-compra h4 {
-    font-size: 12px;
-    margin: 2px 0;
-    color: #777;
-}
-
-#datos-compra h2 {
+.card-marcasH3 {
     font-size: 14px;
-    margin: 4px 0 0 0;
-    color: #28a745;
-    font-weight: bold;
+    color: #666;
+    margin: 4px 0;
 }
 
-/* Botón eliminar */
-.btn-eliminar {
-    font-size: 12px;
-    padding: 4px 8px;
+.card-preciosH2 {
+    font-size: 18px;
+    font-weight: bold;
+    color: var(--color-success);
+    margin: 6px 0;
+}
+
+/* Botón eliminar (X) */
+.eliminar-compra {
+    font-size: 14px;
+    padding: 4px 10px;
     border-radius: 6px;
-    border: none;
-    cursor: pointer;
-    background: #dc3545;
-    color: #fff;
-    transition: background 0.2s;
+    margin-top: 4px;
 }
 
-.btn-eliminar:hover {
-    background: #b02a37;
-}
-
-/* ======== TOTAL ACUMULADO ======== */
+/* ======== TOTAL DEL CARRITO ======== */
 #total-carrito {
-    margin-top: 15px;
-    text-align: center;
-    font-size: 16px;
+    margin-top: 20px;
+    border-top: 2px solid #eee;
+    padding-top: 12px;
+    font-size: 18px;
+}
+
+#total-carrito h3 {
     font-weight: bold;
-    color: #28a745;
+    color: var(--color-secondary);
+}
+
+
+
+/* ESTILOS TABLA DE VEHICULOS REGISTRTADOS */
+/* ===== Contenedor general ===== */
+#container-tabla {
+    max-width: 1100px;
+    margin: 40px auto;
+    padding: 0 20px;
+    text-align: center;
+}
+
+/* ===== Título ===== */
+#container-tabla h1 {
+    font-family: Arial, sans-serif;
+    font-size: 26px;
+    margin-bottom: 20px;
+    color: #004d7a;
+}
+
+/* ===== Tabla ===== */
+#container-tabla #tabla-vehiculos {
+    width: 100%;
+    border-collapse: collapse;
+    background: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Encabezado */
+#tabla-vehiculos thead {
+    background: linear-gradient(90deg, #004d7a, #008793);
+    color: #fff;
+}
+
+#tabla-vehiculos thead td {
+    padding: 14px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* Filas */
+#tabla-vehiculos tbody tr {
+    border-bottom: 1px solid #ddd;
+    transition: background 0.3s ease;
+}
+
+#tabla-vehiculos tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+#tabla-vehiculos tbody tr:hover {
+    background-color: #e8f6f9;
+}
+
+/* Celdas */
+#tabla-vehiculos td {
+    padding: 12px;
+    text-align: center;
+    font-size: 15px;
+    color: #000000;
+}
+
+/* Fotos */
+#tabla-vehiculos td img {
+    max-width: 70px;
+    border-radius: 8px;
 }
