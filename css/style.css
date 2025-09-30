@@ -121,6 +121,7 @@ body {
 
 /* boton de carrito de compras--------------------------------------------------------------------------------------- */
 #button-carrito {
+    position: fixed;
     width: 70px;
     height: 30px;
     top: 20px;
@@ -128,13 +129,12 @@ body {
     border-radius: 20px;
     color: #ffe602;
     background: #0f172a;
-    position: absolute;
     overflow: hidden;
     z-index: 3000;
 }
 
 
-/* ======== CONTENEDOR DEL CARRITO ======== */
+/* ======== CONTENEDOR DEL CARRITO ======== ----------------------------------------------------------------------------*/
 #cont-carrito {
     position: fixed;
     top: 0;
@@ -167,9 +167,10 @@ body {
     padding-bottom: 8px;
 }
 
-/* ======== TARJETAS DEL CARRITO ======== */
+/* ======== TARJETAS DEL CARRITO ========--------------------------------------------------------------------------------------- */
 .carrito-compras {
     display: flex;
+    flex-direction: row; /* asegura fila */
     align-items: center;
     gap: 12px;
     background: #fafafa;
@@ -179,12 +180,15 @@ body {
     margin-bottom: 15px;
     box-shadow: var(--shadow);
     max-height: 200px;
+    position: relative;
 }
+
 
 /* Imagen dentro del carrito */
 .carrito-compras img {
     max-width: 150px;
-    height: 70px;
+    height: auto;
+    margin-right: 10px;
     object-fit: contain;
     border-radius: 8px;
     background: #fff;
@@ -224,6 +228,8 @@ body {
     padding: 4px 10px;
     border-radius: 6px;
     margin-top: 4px;
+  align-self: flex-end; /* Mueve el botón a la derecha */
+  margin-top: 10px;
 }
 
 /* ======== TOTAL DEL CARRITO ======== */
@@ -307,4 +313,39 @@ body {
 #tabla-vehiculos td img {
     max-width: 70px;
     border-radius: 8px;
+}
+
+
+
+
+/* Botón "Ver vehículos" ---------------------------------------------------------------------------------------------------------*/
+.btn-ver {
+    background: linear-gradient(135deg, #007bff, #0056b3);
+    border: none;
+    border-radius: 8px;
+    padding: 12px 24px;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+/* Enlace dentro del botón */
+.btn-ver a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    gap: 8px; /* espacio entre icono y texto */
+}
+
+/* Ícono */
+.btn-ver i {
+    font-size: 18px;
+}
+
+/* Hover */
+.btn-ver:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 12px rgba(0, 123, 255, 0.4);
 }

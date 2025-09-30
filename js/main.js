@@ -44,7 +44,7 @@ function createVehiculoCard(foto, nombre, marca, modelo, km, precio) {
     h4Modelo.innerText = 'Modelo: ' + modelo;
 
     const h4km = document.createElement('h4');
-    h4km.classList.add('card-text');
+    h4km.classList.add('card-text1');
     h4km.textContent = 'Kilometraje: ' + km + ' km';
 
     const h2Precio = document.createElement('h2');
@@ -105,11 +105,25 @@ form.addEventListener('submit', (e) => {
         alert("Ingrese todos los campos a registrar, todos son obligatorios");
 
     }
-    else {
-        const newCard = createVehiculoCard(foto, nombre, marca, modelo, km, precio);
-        contCards.appendChild(newCard);
-        eventsToDivCol(newCard);
+
+    const newCard = createVehiculoCard(foto, nombre, marca, modelo, km, precio);
+    contCards.appendChild(newCard);
+    eventsToDivCol(newCard);
+
+    const newVehiculo = {
+        foto: foto,
+        nombre: nombre,
+        marca: marca,
+        modelo: modelo,
+        km: km,
+        precio: precio
     }
+
+    const vehiculos = JSON.parse(localStorage.getItem('vehiculo')) || [];
+    vehiculos.push(newVehiculo);
+
+    localStorage.setItem('vehiculo', JSON.stringify(vehiculos))
+
 });
 
 // EVENTO TARJETAS-----------------------------------------------------------------------------------------------------
@@ -120,6 +134,7 @@ function eventsToDivCol(divCol) {
 
     btnComprar.addEventListener('click', () => {
         const foto1 = divCol.querySelector('img').getAttribute('src');
+
         const nombre1 = divCol.querySelector('.card-title').textContent;
         const marca1 = divCol.querySelector('.card-subtitle').textContent;
         const precio1 = divCol.querySelector('.text-success').textContent;
@@ -128,13 +143,36 @@ function eventsToDivCol(divCol) {
 
         document.getElementById('cont-carrito').appendChild(createCard);
 
+        const newCarrito = {
+            foto: foto1,
+            nombre: nombre1,
+            marca: marca1,
+            precio: precio1
+        }
+
+        const carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+        carrito.push(newCarrito);
+
+        localStorage.setItem('carrito', JSON.stringify(carrito))
         actualizarTotal();
 
     });
 
+
     btnEliminar.addEventListener('click', () => {
-        divCol.remove(); // elimina la tarjeta del DOM
+        const nombreVehiculo = divCol.querySelector('.card-title').textContent;
+
+        // 1. Elimina del DOM
+        divCol.remove();
+
+        // 2. Elimina también de localStorage
+        let vehiculos = JSON.parse(localStorage.getItem('vehiculo')) || [];
+        vehiculos = vehiculos.filter(v => v.nombre !== nombreVehiculo);
+        localStorage.setItem('vehiculo', JSON.stringify(vehiculos));
     });
+
+
+
 };
 
 
@@ -149,21 +187,22 @@ btnCarrito.addEventListener("click", () => {
 //toda etiqueta que vamos a crear es a partir de la maqueta HTML que se hizo 
 //esta funcion solo crea la estructura html y la deja en un "limbo" para luego ser agregada  mediante un appenchild
 function createCardLateral(foto1, nombre1, marca1, precio1) {
-
-    //aca creamos el elemento padre del contenedor
     const itemCarrito = document.createElement('div');
     itemCarrito.classList.add('col-md-12', 'carrito-compras');
 
     const cardCompras = document.createElement('div');
-    cardCompras.classList.add('card-compras', 'h-100');
+    cardCompras.classList.add('card-compras', 'd-flex', 'align-items-center', 'p-2'); 
+    // <-- aquí la magia: flex + centrado
 
     const img = document.createElement('img');
-    img.classList.add('card-img-top1', 'w-100');
+    img.classList.add('img-fluid', 'rounded'); // más controlado que w-100
+    img.style.maxWidth = "120px"; // imagen controlada
     img.setAttribute('src', foto1);
     img.setAttribute('alt', nombre1);
 
     const datosCompra = document.createElement('div');
-    datosCompra.classList.add('card-body');
+    datosCompra.classList.add('ms-3', 'flex-grow-1'); 
+    // margen a la izquierda + que ocupe espacio restante
 
     const h3Compras = document.createElement('h3');
     h3Compras.classList.add('card-title');
@@ -178,10 +217,10 @@ function createCardLateral(foto1, nombre1, marca1, precio1) {
     h2Precios.textContent = precio1;
 
     const btnEliminarCompra = document.createElement('button');
-    btnEliminarCompra.classList.add('eliminar-compra', 'btn', 'btn-danger', 'btn-eliminar');
+    btnEliminarCompra.classList.add('eliminar-compra', 'btn', 'btn-danger', 'btn-sm', 'mt-2');
     btnEliminarCompra.textContent = "X";
 
-    //agregamos mediante appenchild y Ensamblamos dentro del nodo padre sus nodos hijos, es decir la estructura de la tarea
+    // Estructura
     itemCarrito.appendChild(cardCompras);
     cardCompras.appendChild(img);
     cardCompras.appendChild(datosCompra);
@@ -195,10 +234,10 @@ function createCardLateral(foto1, nombre1, marca1, precio1) {
         actualizarTotal();
     });
 
-    //utilizamos el return para dar respuesta del elemento creado ya que lo usaremos en otra funcion mas adelante
     return itemCarrito;
-
 };
+
+
 
 
 
@@ -214,6 +253,6 @@ function actualizarTotal() {
         total += parseInt(valor) || 0;
     });
 
-    document.getElementById("monto-total").textContent ='$' + total;
+    document.getElementById("monto-total").textContent = '$' + total;
 }
 

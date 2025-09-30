@@ -34,31 +34,31 @@
                     <!-- Nombre -->
                     <div class="mb-3">
                         <label for="nombre" class="form-label">Nombre</label>
-                        <input id="nombre-form" type="text" class="form-control" placeholder="Ej: Corolla">
+                        <input id="nombre-form" type="text" class="form-control" placeholder="Ej: Corolla" required>
                     </div>
 
                     <!-- Marca -->
                     <div class="mb-3">
                         <label for="marca" class="form-label">Marca</label>
-                        <input id="marca-form" type="text" class="form-control" placeholder="Ej: Toyota">
+                        <input id="marca-form" type="text" class="form-control" placeholder="Ej: Toyota" required>
                     </div>
 
                     <!-- Modelo -->
                     <div class="mb-3">
                         <label for="modelo" class="form-label">Modelo</label>
-                        <input id="modelo-form" type="text" class="form-control" placeholder="Ej: 2021">
+                        <input id="modelo-form" type="text" class="form-control" placeholder="Ej: 2021" required>
                     </div>
 
                     <!-- Kilometraje -->
                     <div class="mb-3">
                         <label for="kilometraje" class="form-label">Kilometraje</label>
-                        <input id="km-form" type="number" class="form-control" placeholder="Ej: 35000">
+                        <input id="km-form" type="number" class="form-control" placeholder="Ej: 35000" required>
                     </div>
 
                     <!-- Precio -->
                     <div class="mb-3">
                         <label for="precio" class="form-label">Precio ($)</label>
-                        <input id="precio-form" type="number" class="form-control" placeholder="Ej: 50000000">
+                        <input id="precio-form" type="number" class="form-control" placeholder="Ej: 50000000" required>
                     </div>
 
                     <button id="add-btn" type="submit" class="btn btn-primary">Agregar Vehículo</button>
@@ -66,10 +66,13 @@
 
                 <br>
                 <br>
-                <h3 id="mostrar-vehiculos">Aqui se mostraran los vehiculo resgistrados</h3>
-                <button>
-                    <a href="carrito.html" target="_blank">Ver vehiculos</a>
+                <h5 id="mostrar-vehiculos">Para tu comodidad <br>Aquí veras uno a uno todos los vehículos que registraste</h5>
+                <button class="btn-ver">
+                    <a href="carrito.html" target="_blank">
+                        <i class="bi bi-eye"></i> Ver vehículos
+                    </a>
                 </button>
+
 
             </div>
 
